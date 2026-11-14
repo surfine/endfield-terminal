@@ -1,0 +1,117 @@
+{
+  "id": "endfield-terminal",
+  "version": "1.0.0",
+  "protocol": 1,
+  "kit": ">=1 <2",
+  "windows": [
+    {
+      "window": "endfieldTerminal",
+      "app": "endfield",
+      "entry": "terminal/index.html",
+      "titleKey": "endfield_terminal_title",
+      "windowClass": "endfield-terminal-window",
+      "paneClass": "endfield-terminal-pane",
+      "size": {
+        "width": "1180px",
+        "height": "760px"
+      },
+      "capabilities": [
+        "services",
+        "context",
+        "intents",
+        "appearance",
+        "snapshot",
+        "state"
+      ],
+      "services": [
+        "endfield.search",
+        "endfield.ask"
+      ],
+      "menus": [
+        {
+          "id": "file",
+          "labelKey": "menu_file",
+          "items": [
+            {
+              "type": "item",
+              "action": "close-active-window",
+              "labelKey": "close",
+              "shortcutId": "close-window",
+              "conditionId": "close-active-window"
+            }
+          ]
+        },
+        {
+          "id": "edit",
+          "labelKey": "menu_edit",
+          "items": [
+            {
+              "type": "item",
+              "action": "copy",
+              "labelKey": "copy",
+              "shortcutId": "copy",
+              "conditionId": "copy"
+            },
+            {
+              "type": "item",
+              "action": "select-all",
+              "labelKey": "select_all",
+              "shortcutId": "select-all",
+              "conditionId": "select-all"
+            }
+          ]
+        },
+        {
+          "id": "session",
+          "labelKey": "menu_session",
+          "items": [
+            {
+              "type": "item",
+              "action": "endfield-new-session",
+              "labelKey": "new_session",
+              "shortcutId": "",
+              "conditionId": "endfield-new-session"
+            },
+            {
+              "type": "item",
+              "action": "endfield-run-query",
+              "labelKey": "search",
+              "shortcutId": "",
+              "conditionId": "endfield-run-query"
+            },
+            {
+              "type": "item",
+              "action": "endfield-menu-progress",
+              "labelKey": "endfield_menu_progress",
+              "shortcutId": "",
+              "conditionId": "endfield-menu-progress"
+            },
+            {
+              "type": "item",
+              "action": "endfield-menu-clip",
+              "labelKey": "endfield_menu_clip",
+              "shortcutId": "",
+              "conditionId": "endfield-menu-clip"
+            },
+            {
+              "type": "item",
+              "action": "endfield-sideask",
+              "labelKey": "endfield_sideask",
+              "shortcutId": "",
+              "conditionId": "endfield-sideask"
+            }
+          ]
+        },
+        {
+          "id": "window",
+          "hostMenu": "window"
+        }
+      ]
+    }
+  ],
+  "intents": [],
+  "strings": {
+    "en": {},
+    "zh": {}
+  }
+}
