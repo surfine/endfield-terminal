@@ -8,7 +8,7 @@
 (function installEndfieldRuntime(root) {
   "use strict";
 
-  const VERSION = "1.0.0";
+  const VERSION = "1.0.1";
   const strings = () => root.EndfieldStrings || { en: {}, zh: {} };
   let bridge = null;
   let welcome = null;
@@ -154,11 +154,22 @@
 
   // Desk service: plain JSON result, or { ok:false, reason } / bridge error.
   // options.requestId names the call so cancelService can stop it on the desk.
+  //
+  // An answer from a local model takes longer than a desk lookup: the bridge's
+  // default wait is 15 s, and a real local answer (search, evidence, then the
+  // model) can run past it, which the terminal could only show as the archive
+  // failing. Only the model-backed services opt into the longer wait; a hung
+  // desk call elsewhere still fails fast, and cancelService still stops this
+  // one when the writer asks a new question.
+  const MODEL_SERVICE_TIMEOUT_MS = 240000;
+  const MODEL_SERVICES = new Set(["endfield.ask", "endfield.answer"]);
   function service(name, params, options = {}) {
     if (!bridge) return Promise.resolve({ ok: false, reason: "unavailable" });
-    const request = { name, params: params || {} };
+    const serviceName = String(name || "");
+    const request = { name: serviceName, params: params || {} };
     if (options.requestId) request.requestId = String(options.requestId);
-    return bridge.call("service.request", request)
+    const timeout = Number(options.timeout) || (MODEL_SERVICES.has(serviceName) ? MODEL_SERVICE_TIMEOUT_MS : 0);
+    return bridge.call("service.request", request, timeout > 0 ? { timeout } : {})
       .then((result) => result)
       .catch((error) => ({ ok: false, reason: error?.code || error?.message || "unavailable" }));
   }
