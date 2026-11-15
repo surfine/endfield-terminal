@@ -4,6 +4,12 @@ A browser story-archive terminal for *Arknights: Endfield*: ask a plot
 question, see numbered source lines, then a one-line verdict. A host page can
 embed the same files in a frame.
 
+## Screenshots
+
+Captured running inside the AI System 6 desk: Classic on the left, Liquid Glass on the right.
+
+<p><img src="screenshots/endfieldTerminal-classic.png" width="49%" alt="Endfield Terminal · Classic"> <img src="screenshots/endfieldTerminal-liquid-glass.png" width="49%" alt="Endfield Terminal · Liquid Glass"></p>
+
 ## Run on its own
 
 ```bash

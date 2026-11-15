@@ -3,6 +3,12 @@
 一个在浏览器里运行的《明日方舟：终末地》剧情资料库终端：提问、看带编号的
 原文、再读一句结论。也可由宿主页面嵌进窗口。
 
+## 截图
+
+在 AI System 6 桌面里实际运行时截取，左为 Classic，右为 Liquid Glass。
+
+<p><img src="screenshots/endfieldTerminal-classic.png" width="49%" alt="Endfield Terminal · Classic"> <img src="screenshots/endfieldTerminal-liquid-glass.png" width="49%" alt="Endfield Terminal · Liquid Glass"></p>
+
 ## 单独打开
 
 ```bash
