@@ -240,7 +240,9 @@ export class Terminal {
     const deskRequestId = `endfield-ask-${requestId}`;
     this.deskRequestId = deskRequestId;
     this.lastQuery.value = normalized;
-    await this.saveRecentQuery(normalized);
+    // Written behind the question, as v1.0.1 did: a slow desk write must not
+    // let a New Query or a second question slip in before the search starts.
+    void this.saveRecentQuery(normalized).catch(() => undefined);
     this.renderRoute();
     this.setBusy(true);
     this.article.value = {

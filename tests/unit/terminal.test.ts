@@ -56,6 +56,31 @@ describe("the terminal", () => {
     expect(terminal.routeText.value).toContain("v1.5");
   });
 
+  it("a New Query during a slow save of the recent list leaves no search running", async () => {
+    const host = fakeHost();
+    const call = host.client.call.bind(host.client);
+    let release: () => void = () => undefined;
+    const gate = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    Object.assign(host.client, {
+      call: async (method: string, params: Record<string, unknown>, options?: unknown) => {
+        if (method === "state.set") await gate;
+        return call(method as never, params as never, options as never);
+      },
+    });
+    const terminal = new Terminal(host.client);
+    terminal.renderTerminal();
+    const asking = terminal.ask("旁白是谁");
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    terminal.reset();
+    release();
+    await asking;
+    expect(terminal.busy.value).toBe(false);
+    expect(terminal.lastQuery.value).toBe("");
+    expect(terminal.article.value.html).not.toContain("旁白是谁");
+  });
+
   it("keeps the question in state and at the top of the list", async () => {
     const host = fakeHost();
     const terminal = new Terminal(host.client);
