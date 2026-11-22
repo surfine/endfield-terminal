@@ -9,6 +9,14 @@ export default defineConfig({
     outDir: "dist",
     emptyOutDir: true,
     // The page the manifest names.
-    rollupOptions: { input: { terminal: "terminal/index.html" } },
+    rollupOptions: {
+      input: { terminal: "terminal/index.html" },
+      output: {
+        // The desk's themes name the background at its 1.0 address
+        // (assets/endfield-background.svg), so it keeps that name.
+        assetFileNames: (asset) =>
+          asset.names?.includes("endfield-background.svg") ? "assets/[name][extname]" : "assets/[name]-[hash][extname]",
+      },
+    },
   },
 });
