@@ -87,6 +87,13 @@ English: [README.md](README.md).
 
 ## 变更纪录
 
+### 1.1.1 — 2026-11-22
+
+- 修正：背景图重新以 1.0 的地址 `assets/endfield-background.svg` 出货，桌面的
+  主题用的就是这个地址；1.1.0 给它加了哈希文件名，那些主题因此丢了地图。
+- 修正：Barlow 字体的授权文件（`assets/fonts/barlow-condensed/OFL.txt`）重新
+  随 `dist/` 出货。
+
 ### 1.1.0 — 2026-11-22
 
 - 改成 TypeScript + Preact，strict `tsc` 与 Biome 干净。窗口、文字、菜单动词、

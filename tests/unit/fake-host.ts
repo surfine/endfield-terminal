@@ -75,7 +75,7 @@ export function fakeHost({ standalone = false }: { standalone?: boolean } = {}):
     protocol: 1,
     appId: "endfield",
     window: "endfieldTerminal",
-    version: "1.1.0",
+    version: "1.1.1",
     language: "zh",
     appearance: {
       id: "classic",

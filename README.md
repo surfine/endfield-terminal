@@ -91,6 +91,14 @@ permission and are **not** under MIT — see [LICENSES.md](LICENSES.md).
 
 ## Changelog
 
+### 1.1.1 — 2026-11-22
+
+- Fixed: the background ships again at its 1.0 address,
+  `assets/endfield-background.svg`, which the desk's themes name; 1.1.0 gave it
+  a hashed file name, so those themes lost the map.
+- Fixed: the Barlow font's licence (`assets/fonts/barlow-condensed/OFL.txt`)
+  ships in `dist/` again.
+
 ### 1.1.0 — 2026-11-22
 
 - TypeScript + Preact, strict `tsc` and Biome. Same window, copy, menu verbs,
