@@ -100,3 +100,5 @@ permission and are **not** under MIT — see [LICENSES.md](LICENSES.md).
   tables, and the texts, labels and placeholders they produced are unchanged.
 - What a language switch touches is unchanged: the window's chrome re-labels,
   and an answer already on screen keeps the language it was drawn in.
+- Fixed: a New Query (or a second question) while the recent list was still
+  being saved no longer leaves the window stuck on searching.
